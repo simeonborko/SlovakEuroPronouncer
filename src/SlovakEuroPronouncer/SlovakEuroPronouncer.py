@@ -27,8 +27,6 @@ def __pronounce(n: str) -> str:
                    ('', 'jeden', 'dva', 'tri', 'štyri', 'päť', 'šesť', 'sedem', 'osem', 'deväť')[int(n[1])]
 
     elif len(n) == 3:
-        if n[0] == '0':
-            raise Exception
         return ('', 'sto', 'dvesto', 'tristo', 'štyristo', 'päťsto', 'šesťsto', 'sedemsto',
                 'osemsto', 'deväťsto')[int(n[0])] + __pronounce(n[1:])
 
