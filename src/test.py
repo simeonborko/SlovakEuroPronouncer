@@ -1,5 +1,6 @@
 from unittest import TestCase
-from .SlovakEuroPronouncer.SlovakEuroPronouncer import pronounce
+from decimal import Decimal
+from .SlovakEuroPronouncer import pronounce, pronounce_with_cents
 
 
 class TestPronouncer(TestCase):
@@ -29,7 +30,6 @@ class TestPronouncer(TestCase):
         self.assertEqual('deväťstodeväťdesiat eur', pronounce(990))
         self.assertEqual('sedemstosedemdesiatsedem eur', pronounce(777))
 
-
     def test_4(self):
         self.assertEqual('tisíc eur', pronounce(1000))
         self.assertEqual('tisícstojeden eur', pronounce(1101))
@@ -54,3 +54,7 @@ class TestPronouncer(TestCase):
         self.assertEqual('dvestodvadsaťtisícdva eur', pronounce(220002))
         self.assertEqual('tristotisíctristotri eur', pronounce(300303))
 
+    def test_7(self):
+        self.assertEqual('stodvadsaťtri eur a 1 cent', pronounce_with_cents(Decimal('123.01')))
+        self.assertEqual('stodvadsaťtri eur a 2 centy', pronounce_with_cents(Decimal('123.02')))
+        self.assertEqual('stodvadsaťtri eur a 45 centov', pronounce_with_cents(Decimal('123.45')))

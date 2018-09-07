@@ -1,3 +1,7 @@
+from decimal import Decimal
+import math
+
+
 def pronounce(number: int) -> str:
 
     if number < 0 or number >= 1000000:
@@ -11,6 +15,20 @@ def pronounce(number: int) -> str:
         eur = 'eur'
 
     return __pronounce(str(number)) + " " + eur
+
+
+def pronounce_with_cents(n: Decimal) -> str:
+    base = int(math.floor(n))
+    rest = int(math.floor((n - base) * 100))
+    eur = pronounce(base)
+    if rest == 0:
+        return eur
+    elif rest == 1:
+        return '{} a {} cent'.format(eur, rest)
+    elif rest in (2, 3, 4):
+        return '{} a {} centy'.format(eur, rest)
+    else:
+        return '{} a {} centov'.format(eur, rest)
 
 
 def __pronounce(n: str) -> str:
