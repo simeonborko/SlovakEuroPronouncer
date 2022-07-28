@@ -12,7 +12,7 @@ Tento nástroj je vhodný napríklad pre tvorbu zmlúv.
 
 ## Inštalácia
 ```
-pip install git+git://github.com/simeonborko/SlovakEuroPronouncer.git
+pip install git+https://github.com/simeonborko/SlovakEuroPronouncer.git
 ```
 
 ## Použitie
